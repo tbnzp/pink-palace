@@ -251,7 +251,7 @@
                 </p>
                 
                 <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; max-width: 400px; margin: 0 auto;">
-                    <input type="text" id="riddleInput" placeholder="Type your answer.." style="background-color: #121926; color: #39ff14; font-family: 'Courier Prime', monospace; width: 100%; max-width: 240px; padding: 8px 15px; border-radius: 4px; border: 1px solid #8b0000; outline: none; font-size: 0.9rem; box-shadow: inset 0 0 5px rgba(0,0,0,0.5);">
+                    <input type="text" id="riddleInput" placeholder="Type your answer..." style="background-color: #121926; color: #39ff14; font-family: 'Courier Prime', monospace; width: 100%; max-width: 240px; padding: 8px 15px; border-radius: 4px; border: 1px solid #8b0000; outline: none; font-size: 0.9rem; box-shadow: inset 0 0 5px rgba(0,0,0,0.5);">
                     <button class="action-btn-sm" onclick="verifyMultiStageRiddle()">SUBMIT</button>
                 </div>
                 
@@ -387,20 +387,20 @@
 
             if (currentRiddleStage === 1) {
                 // Tier 1: Easy Check
-                if (answer.includes('Button')) {
+                if (answer.includes('button')) {
                     currentRiddleStage = 2;
                     errorLabel.style.display = 'none';
                     inputField.value = '';
                     
                     stageTitle.innerText = "🔮 LEVEL 2: MEDIUM-EASY";
-                    questionText.innerText = '"I have no wings but I can fly, I have no voice but I can cry, and I am the Other Mother\'s winged hair-clip scout spy... What am I?"';
+                    questionText.innerText = '"I have no wings but I can fly, I have no voice but I can cry, and I am the Other Mother's winged hair-clip scout spy... What am I?"';
                 } else {
                     errorLabel.innerText = "[!] Think about what the Other Mother uses to sew... 🧵";
                     errorLabel.style.display = 'block';
                 }
             } else if (currentRiddleStage === 2) {
                 // Tier 2: Medium-Easy Check
-                if (answer.includes('Dragon')) {
+                if (answer.includes('dragon')) {
                     currentRiddleStage = 3;
                     errorLabel.style.display = 'none';
                     inputField.value = '';
@@ -413,7 +413,7 @@
                 }
             } else if (currentRiddleStage === 3) {
                 // Tier 3: Medium Check
-                if (answer.includes('Key')) {
+                if (answer.includes('key')) {
                     currentRiddleStage = 4;
                     errorLabel.style.display = 'none';
                     inputField.value = '';
@@ -426,7 +426,7 @@
                 }
             } else if (currentRiddleStage === 4) {
                 // Tier 4: Medium-Hard Check
-                if (answer.includes('Stone')) {
+                if (answer.includes('stone')) {
                     currentRiddleStage = 5;
                     errorLabel.style.display = 'none';
                     inputField.value = '';
@@ -439,7 +439,7 @@
                 }
             } else if (currentRiddleStage === 5) {
                 // Tier 5: Hard Check
-                if (answer.includes('Mother') || answer.includes('Spider')) {
+                if (answer.includes('mother') || answer.includes('spider')) {
                     riddleUnlocked = true;
                     errorLabel.style.display = 'none';
                     document.getElementById('riddle-modal').style.display = 'none';
