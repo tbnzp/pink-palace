@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eia Day! 🔘</title>
-    <link rel="icon" href="coraline.png" type="image/png">
+    <link rel="icon" href="coralin3.png" type="image/png">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* 1. Global Reset & Moody Variables Setup */
+       /* 1. Global Reset & Moody Variables Setup */
         * {
             margin: 0;
             padding: 0;
@@ -19,7 +19,7 @@
 
         /* 2. Fog-Shrouded Deep Indigo & Grey Canvas Grid */
         body {
-            background-color: #0b111e; /* Deep moody indigo-black base */
+            background-color: #0b111e;
             background-image: 
                 radial-gradient(circle at center, rgba(26, 36, 54, 0.8) 0%, #060a12 90%),
                 linear-gradient(rgba(11, 17, 30, 0.5) 2px, transparent 2px),
@@ -29,18 +29,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Courier Prime', monospace; /* Vintage typewriter font */
+            font-family: 'Courier Prime', monospace;
             overflow-x: hidden;
             padding: 20px;
             position: relative;
+        }
+
+        /* Enforce a strict sitewide habit of perfectly justified text blocks */
+        p, li, .lock-label, #riddle-modal p, #photo-modal p, .letter-content {
+            text-align: justify !important;
+            text-justify: inter-word !important;
         }
 
         /* 3. Highly Visible Dark Background Silhouettes & Outlines */
         .bg-button-decor {
             position: absolute;
             font-size: 3rem;
-            color: #030508; /* Stark silhouette black */
-            text-shadow: 0 0 15px rgba(57, 255, 20, 0.25); /* Faint seeing stone green glow aura */
+            color: #030508;
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.25);
             pointer-events: none;
             user-select: none;
             filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
@@ -54,20 +60,18 @@
 
         /* 4. Central Vintage Wallpaper Card with Jagged Hand-Stitched Border */
         .sanctuary-card {
-            background-color: #121926; /* Dark fog-grey panel canvas */
-            /* Vintage wallpaper-inspired striped texture overlay pattern */
+            background-color: #121926;
             background-image: repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(6, 10, 18, 0.4) 18px, rgba(6, 10, 18, 0.4) 20px);
             border-radius: 12px;
             box-shadow: 
                 0 20px 50px rgba(0, 0, 0, 0.8), 
-                0 0 40px rgba(57, 255, 20, 0.15); /* Neon seeing stone green ambient side bloom */
+                0 0 40px rgba(57, 255, 20, 0.15);
             padding: 55px 45px;
             width: 100%;
             max-width: 680px;
             position: relative;
-            /* Jagged, hand-stitched look created via double layer neon borders */
-            border: 3px dashed #39ff14; /* Stark Seeing Stone Neon Green stitched lines */
-            outline: 6px double #060a12; /* External stark container border framing lock */
+            border: 3px dashed #39ff14;
+            outline: 6px double #060a12;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -90,29 +94,30 @@
             transform: scale(0.95);
         }
 
-        /* Spindly Serif Character Typography Headers */
+        /* Spindly Serif Character Typography Headers (Excluded from justification) */
         h1.birthday-title {
             font-family: 'Cinzel', serif;
-            color: #8b0000; /* Deep Crimson Accent Text */
+            color: #8b0000;
             font-size: 2.1rem;
             font-weight: 800;
             margin-bottom: 15px;
             letter-spacing: 1px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            text-align: center !important;
         }
 
         p.prompt-text {
-            color: #a3b0c2; /* Fog-grey typewriter text */
+            color: #a3b0c2;
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 35px;
         }
 
-        /* 6. Lock Row Containers with Button Black Theme Attributes */
+        /* 6. Lock Row Containers */
         .lock-container {
             width: 100%;
-            background-color: #090e17; /* Button-black background boxes */
-            border: 2px dashed #8b0000; /* Crimson hand-stitched inner lines */
+            background-color: #090e17;
+            border: 2px dashed #8b0000;
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 25px;
@@ -139,14 +144,13 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background-color: #2b384e; /* Dim locked state indicator */
+            background-color: #2b384e;
             border: 1px solid #060a12;
             transition: all 0.3s ease;
         }
 
-        /* Unlocked state glows vibrant Seeing Stone Neon Green */
         .lock-status-dot.active-pass {
-            background-color: #39ff14; 
+            background-color: #39ff14;
             box-shadow: 0 0 12px #39ff14, 0 0 4px #39ff14;
         }
 
@@ -155,13 +159,12 @@
             font-weight: 700;
             color: #a3b0c2;
             flex-grow: 1;
-            text-align: left;
             letter-spacing: 0.5px;
         }
 
         .action-btn-sm {
-            background-color: #060a12; /* Stark button black action nodes */
-            color: #39ff14; /* Neon text labels */
+            background-color: #060a12;
+            color: #39ff14;
             border: 1px solid #39ff14;
             padding: 7px 18px;
             border-radius: 4px;
@@ -175,7 +178,7 @@
 
         .action-btn-sm:hover {
             background-color: #39ff14;
-            color: #060a12; /* Inverts palette cleanly on cursor hover interaction */
+            color: #060a12;
             box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
             transform: translateY(-1px);
         }
