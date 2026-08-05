@@ -357,10 +357,11 @@
     
     <!-- Single Page Whimsical Verification Script Engine -->
     <script>
-        // Track task completion progress states
+// Track task completion progress states
         let riddleUnlocked = false;
         let photosUnlocked = false;
         let activeSlideIndex = 0;
+        let currentRiddleStage = 1;
 
         // Toggle puzzle interface drawer modals smoothly
         function showMiniTask(modalId) {
@@ -374,10 +375,7 @@
             }
         }
 
-        // Checklist 1: Coraline Riddle Check Routine
-                // Track multi-stage riddle tiers (Updated to 5 levels)
-        let currentRiddleStage = 1;
-
+        // Checklist 1: Five-Tier Multi-Stage Coraline Riddle Quest Routine
         function verifyMultiStageRiddle() {
             const inputField = document.getElementById('riddleInput');
             const errorLabel = document.getElementById('riddleError');
@@ -393,7 +391,7 @@
                     inputField.value = '';
                     
                     stageTitle.innerText = "🔮 LEVEL 2: MEDIUM-EASY";
-                    questionText.innerText = '"I have no wings but I can fly, I have no voice but I can cry, and I am the Other Mother's winged hair-clip scout spy... What am I?"';
+                    questionText.innerText = '"I have no wings but I can fly, I have no voice but I can cry, and I am the Other Mother\'s winged hair-clip scout spy... What am I?"';
                 } else {
                     errorLabel.innerText = "[!] Think about what the Other Mother uses to sew... 🧵";
                     errorLabel.style.display = 'block';
@@ -421,7 +419,7 @@
                     stageTitle.innerText = "🔮 LEVEL 4: MEDIUM-HARD";
                     questionText.innerText = '"I am a green loop made of stone, look through my center when you are completely alone. I find what is stolen or lost... What am I?"';
                 } else {
-                    errorLabel.innerText = "[!] Think about what opens the small hidden living room door.. 🔑";
+                    errorLabel.innerText = "[!] Think about what opens the small hidden living room door... 🔑";
                     errorLabel.style.display = 'block';
                 }
             } else if (currentRiddleStage === 4) {
@@ -432,9 +430,9 @@
                     inputField.value = '';
                     
                     stageTitle.innerText = "🔮 LEVEL 5: HARD";
-                    questionText.innerText = '"I look friendly at first but have a wicked steel sting. I weave fine silken webs to trap wandering children.. Who am I?"';
+                    questionText.innerText = '"I look friendly at first but have a wicked steel sting. I weave fine silken webs to trap wandering children... Who am I?"';
                 } else {
-                    errorLabel.innerText = "[!] Miss Spink and Forcible gave this candy item to Coraline to look through.. 🟢";
+                    errorLabel.innerText = "[!] Miss Spink and Forcible gave this candy item to Coraline to look through... 🟢";
                     errorLabel.style.display = 'block';
                 }
             } else if (currentRiddleStage === 5) {
@@ -461,8 +459,7 @@
             }
         }
 
-
-        // Checklist 2: Deck Slide Progression Controller (Properly updated for your 5 files)
+        // Checklist 2: Deck Slide Progression Controller (For 5 Photos)
         function shiftSlide(direction) {
             const slides = document.querySelectorAll('.gallery-slide');
             
@@ -497,7 +494,7 @@
             // Render newly targeted slide image node frame
             slides[activeSlideIndex].style.display = 'flex';
             
-            // Render index numbering string tracker display element dynamically out of active elements length
+            // Render index numbering string tracker display element dynamically
             document.getElementById('slideIndexDisplay').innerText = `${activeSlideIndex + 1} / ${slides.length}`;
         }
 
@@ -520,7 +517,7 @@
                     const reward = document.getElementById('rewardPanel');
                     reward.style.display = 'block';
                     
-                    // Small delay hooks CSS rendering engine for clean slide execution transitions
+                    // Small delay hooks CSS rendering engine for clean transitions
                     setTimeout(() => {
                         reward.style.opacity = '1';
                         reward.style.transform = 'scale(1)';
