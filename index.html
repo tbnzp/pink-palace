@@ -200,6 +200,7 @@
     <div class="bg-button-decor" style="top: 72%; left: 9%; animation-delay: 1.5s;">🧵</div>
     <div class="bg-button-decor" style="top: 18%; right: 8%; animation-delay: 0.8s;">🔑</div>
     <div class="bg-button-decor" style="top: 82%; right: 11%; animation-delay: 2.2s;">🔘</div>
+    
     <!-- Central Whimsical Birthday Workspace Container Frame -->
     <div class="sanctuary-card">
 
@@ -210,7 +211,7 @@
             <div style="height: 1px; width: 140px; background: repeating-linear-gradient(90deg, #8b0000, #8b0000 4px, transparent 4px, transparent 8px); margin: 0 auto 20px auto;"></div>
             
             <p class="prompt-text">
-                Be careful what you wish for... Beyond this weathered locking panel lies the entrance to another world. But no door opens without a worthy hand. Complete the three mechanical trials below, and the path will reveal itself.
+                Be careful what you wish for... Before this vintage locking panel reveals what lies behind the small hidden door, you must unthread the three mechanical tasks below.
             </p>
 
             <!-- The Core Gatekeeper Lock Status Display Module -->
@@ -241,7 +242,7 @@
             
             <!-- Puzzle 1: Coraline Riddle Module Layer -->
             <div id="riddle-modal" style="display: none; padding: 25px; background: #090e17; border: 1px dashed #39ff14; border-radius: 4px; margin-top: 20px; animation: slideUp 0.3s ease;">
-                <p style="font-size: 0.95rem; font-weight: 700; color: #a3b0c2; line-height: 1.6; margin-bottom: 15px; text-align: left;">
+                <p style="font-size: 0.95rem; font-weight: 700; color: #a3b0c2; line-height: 1.6; margin-bottom: 15px;">
                     🔮 "I have two black button eyes, I loop thread through seams, and I am the hidden gateway to your dreamiest dreams. What am I?"
                 </p>
                 <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; max-width: 400px; margin: 0 auto;">
@@ -253,33 +254,48 @@
 
             <!-- Puzzle 2: Photo Slider Deck Gallery Module Layer -->
             <div id="photo-modal" style="display: none; padding: 25px; background: #090e17; border: 1px dashed #39ff14; border-radius: 4px; margin-top: 20px; animation: slideUp 0.3s ease; width: 100%;">
-                <p style="font-size: 0.95rem; font-weight: 700; color: #a3b0c2; margin-bottom: 20px; text-align: center;">
+                <p style="font-size: 0.95rem; font-weight: 700; color: #a3b0c2; margin-bottom: 20px; text-align: center !important;">
                     🔎 Flip through our recorded memory frames to break the spell!
                 </p>
                 
-                <!-- The Photo Deck Wrapper Framework -->
+                <!-- The Photo Deck Wrapper Framework expanded to support your 5 photos -->
                 <div style="position: relative; width: 100%; max-width: 380px; height: 260px; margin: 0 auto; overflow: hidden; border-radius: 4px; background: #121926; border: 1px solid #060a12; box-shadow: inset 0 0 15px rgba(0,0,0,0.6);">
                     <!-- Slide Frame 1 -->
                     <div class="gallery-slide" style="position: absolute; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px;">
-                        <div style="width: 140px; height: 140px; background: #060a12; border: 2px dashed #8b0000; border-radius: 4px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; color: #8b0000; font-size: 3rem; box-shadow: 0 0 10px rgba(0,0,0,0.5);">🔘</div>
-                        <span style="font-size: 0.85rem; font-weight: 700; color: #a3b0c2;">[Memory Photo 1 Placeholder]</span>
+                        <img src="pic1.png" alt="Memory 1" style="width: auto; height: 140px; max-width: 90%; object-fit: contain; border: 2px dashed #8b0000; border-radius: 4px; margin-bottom: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 140px; height: 140px; background: #060a12; border: 2px dashed #8b0000; border-radius: 4px; margin-bottom: 12px; align-items: center; justify-content: center; color: #8b0000; font-size: 3rem;">🔘</div>
+                        <span style="font-size: 0.85rem; font-weight: 700; color: #a3b0c2;">[Memory Photo 1]</span>
                     </div>
                     <!-- Slide Frame 2 -->
                     <div class="gallery-slide" style="position: absolute; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 15px;">
-                        <div style="width: 140px; height: 140px; background: #060a12; border: 2px dashed #39ff14; border-radius: 4px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; color: #39ff14; font-size: 3rem; box-shadow: 0 0 10px rgba(0,0,0,0.5);">🧵</div>
-                        <span style="font-size: 0.85rem; font-weight: 700; color: #a3b0c2;">[Memory Photo 2 Placeholder]</span>
+                        <img src="pic2.png" alt="Memory 2" style="width: auto; height: 140px; max-width: 90%; object-fit: contain; border: 2px dashed #39ff14; border-radius: 4px; margin-bottom: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 140px; height: 140px; background: #060a12; border: 2px dashed #39ff14; border-radius: 4px; margin-bottom: 12px; align-items: center; justify-content: center; color: #39ff14; font-size: 3rem;">🧵</div>
+                        <span style="font-size: 0.85rem; font-weight: 700; color: #a3b0c2;">[Memory Photo 2]</span>
                     </div>
                     <!-- Slide Frame 3 -->
                     <div class="gallery-slide" style="position: absolute; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 15px;">
-                        <div style="width: 140px; height: 140px; background: #060a12; border: 2px dashed #8b0000; border-radius: 4px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; color: #8b0000; font-size: 3rem; box-shadow: 0 0 10px rgba(0,0,0,0.5);">🗝️</div>
-                        <span style="font-size: 0.85rem; font-weight: 700; color: #a3b0c2;">[Memory Photo 3 Placeholder]</span>
+                        <img src="pic3.png" alt="Memory 3" style="width: auto; height: 140px; max-width: 90%; object-fit: contain; border: 2px dashed #8b0000; border-radius: 4px; margin-bottom: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 140px; height: 140px; background: #060a12; border: 2px dashed #8b0000; border-radius: 4px; margin-bottom: 12px; align-items: center; justify-content: center; color: #8b0000; font-size: 3rem;">🗝️</div>
+                        <span style="font-size: 0.85rem; font-weight: 700; color: #a3b0c2;">[Memory Photo 3]</span>
+                    </div>
+                    <!-- Slide Frame 4 -->
+                    <div class="gallery-slide" style="position: absolute; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 15px;">
+                        <img src="pic4.png" alt="Memory 4" style="width: auto; height: 140px; max-width: 90%; object-fit: contain; border: 2px dashed #39ff14; border-radius: 4px; margin-bottom: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 140px; height: 140px; background: #060a12; border: 2px dashed #39ff14; border-radius: 4px; margin-bottom: 12px; align-items: center; justify-content: center; color: #39ff14; font-size: 3rem;">🌟</div>
+                        <span style="font-size: 0.85rem; font-weight: 700; color: #a3b0c2;">[Memory Photo 4]</span>
+                    </div>
+                    <!-- Slide Frame 5 -->
+                    <div class="gallery-slide" style="position: absolute; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 15px;">
+                        <img src="pic5.png" alt="Memory 5" style="width: auto; height: 140px; max-width: 90%; object-fit: contain; border: 2px dashed #8b0000; border-radius: 4px; margin-bottom: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 140px; height: 140px; background: #060a12; border: 2px dashed #8b0000; border-radius: 4px; margin-bottom: 12px; align-items: center; justify-content: center; color: #8b0000; font-size: 3rem;">🔮</div>
+                        <span style="font-size: 0.85rem; font-weight: 700; color: #a3b0c2;">[Memory Photo 5]</span>
                     </div>
                 </div>
 
                 <!-- Deck Navigation Controls -->
                 <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px;">
                     <button class="action-btn-sm" style="background-color: #060a12; border-color: #8b0000; color: #8b0000;" onclick="shiftSlide(-1)">PREV</button>
-                    <span id="slideIndexDisplay" style="font-size: 0.9rem; font-weight: 700; color: #39ff14; align-self: center;">1 / 3</span>
+                    <span id="slideIndexDisplay" style="font-size: 0.9rem; font-weight: 700; color: #39ff14; align-self: center;">1 / 5</span>
                     <button class="action-btn-sm" style="background-color: #060a12; border-color: #8b0000; color: #8b0000;" onclick="shiftSlide(1)">NEXT</button>
                 </div>
             </div>
@@ -292,17 +308,23 @@
             <div style="height: 1px; width: 160px; background: repeating-linear-gradient(90deg, #39ff14, #39ff14 4px, transparent 4px, transparent 8px); margin: 0 auto 30px auto;"></div>
             
             <!-- Vintage Typewriter-Style Long Letter Box Node -->
-            <div style="text-align: justify; text-justify: inter-word; color: #a3b0c2; font-size: 1rem; line-height: 1.8; max-height: 400px; overflow-y: auto; padding-right: 15px; background-color: #090e17; border: 2px dashed #8b0000; padding: 30px; border-radius: 4px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
-                <p style="margin-bottom: 20px; font-weight: 700; color: #8b0000; font-family: 'Cinzel', serif; font-size: 1.1rem;">My Dearest,</p>
+             <div class="letter-content" style="color: #a3b0c2; font-size: 1rem; line-height: 1.8; max-height: 400px; overflow-y: auto; padding-right: 15px; background-color: #090e17; border: 2px dashed #8b0000; padding: 30px; border-radius: 4px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
+                <p style="margin-bottom: 20px; font-weight: 700; color: #8b0000; font-family: 'Cinzel', serif; font-size: 1.1rem; text-align: left !important;">My Dearest Eia,</p>
+                
                 <p style="margin-bottom: 20px;">
-                    [Insert your beautifully long, heartfelt birthday message to her right here inside this typewriter space! Tell her how much she means to you, your favorite memory milestones together, and all the special quirks you love about her.]
+                    Happy Birthday to the most amazing girl in the entire world! Today is all about celebrating you, your beautiful soul, and the incredible light you bring into my life every single day. I wanted to build this little secret world just for you to show you how completely special you are to me.
                 </p>
+                
                 <p style="margin-bottom: 20px;">
-                    Just like Coraline discovered a magical world behind the little door, finding you opened up a whole new universe of happiness for me. Thank you for being my anchor, my peace, and my absolute favorite person in the world.
+                    Every single moment spent by your side is a memory I hold close to my heart. Your smile can instantly clear away any dark cloud, and your warmth makes everything feel peaceful. You deserve the absolute world today and every single day after. I am so unbelievably grateful to walk this journey right by your side.
                 </p>
-                <p style="text-align: right; font-weight: 700; color: #39ff14; margin-top: 25px; font-family: 'Cinzel', serif;">Forever and always, Yours. ❤️</p>
+                
+                <p style="margin-bottom: 20px;">
+                    Just like Coraline discovered a magical world hidden right behind the little door, finding you opened up a whole new universe of endless happiness for me. Thank you for being my anchor, my peace, and my absolute favorite person in existence.
+                </p>
+                
+                <p style="text-align: right !important; font-weight: 700; color: #39ff14; margin-top: 25px; font-family: 'Cinzel', serif;">Forever and always, Yours. ❤️</p>
             </div>
-        </div>
 
     </div> <!-- Closes .sanctuary-card cleanly -->
 
@@ -313,6 +335,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
+    
     <!-- Single Page Whimsical Verification Script Engine -->
     <script>
         // Track task completion progress states
@@ -361,14 +384,14 @@
             }
         }
 
-        // Checklist 2: Deck Slide Progression Controller
+        // Checklist 2: Deck Slide Progression Controller (Updated for 5 Photos)
         function shiftSlide(direction) {
             const slides = document.querySelectorAll('.gallery-slide');
             
             // Hide current card
             slides[activeSlideIndex].style.display = 'none';
             
-            // Cycle math constraints keeping pointer bound to 0-2 array bounds
+            // Cycle math constraints keeping pointer bound to 0-4 array bounds
             activeSlideIndex += direction;
             if (activeSlideIndex >= slides.length) {
                 activeSlideIndex = slides.length - 1;
