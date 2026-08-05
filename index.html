@@ -211,7 +211,7 @@
             <div style="height: 1px; width: 140px; background: repeating-linear-gradient(90deg, #8b0000, #8b0000 4px, transparent 4px, transparent 8px); margin: 0 auto 20px auto;"></div>
             
             <p class="prompt-text">
-                Be careful what you wish for... Before this vintage locking panel reveals what lies behind the small hidden door, you must unthread the three mechanical tasks below.
+                Be careful what you wish for.. Beyond this weathered locking panel lies the entrance to another world. But no door opens without a worthy hand. Complete the three mechanical trials below, and the path will reveal itself.
             </p>
 
             <!-- The Core Gatekeeper Lock Status Display Module -->
@@ -242,13 +242,19 @@
             
             <!-- Puzzle 1: Coraline Riddle Module Layer -->
             <div id="riddle-modal" style="display: none; padding: 25px; background: #090e17; border: 1px dashed #39ff14; border-radius: 4px; margin-top: 20px; animation: slideUp 0.3s ease;">
-                <p style="font-size: 0.95rem; font-weight: 700; color: #a3b0c2; line-height: 1.6; margin-bottom: 15px;">
-                    🔮 "I have two black button eyes, I loop thread through seams, and I am the hidden gateway to your dreamiest dreams. What am I?"
+                <!-- Riddle Stage Sub-Header Tracker Indicator -->
+                <p id="riddleStageTitle" style="font-family: 'Cinzel', serif; color: #8b0000; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; text-align: left !important;">🔮 LEVEL 1: EASY</p>
+                
+                <!-- The Dynamic Target Riddle Question Label Slot -->
+                <p id="riddleQuestionText" style="font-size: 0.95rem; font-weight: 700; color: #a3b0c2; line-height: 1.6; margin-bottom: 15px;">
+                    "I have two black button eyes, I loop thread through seams, and I am the hidden gateway to your dreamiest dreams. What am I?"
                 </p>
+                
                 <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; max-width: 400px; margin: 0 auto;">
                     <input type="text" id="riddleInput" placeholder="type answer..." style="background-color: #121926; color: #39ff14; font-family: 'Courier Prime', monospace; width: 100%; max-width: 240px; padding: 8px 15px; border-radius: 4px; border: 1px solid #8b0000; outline: none; font-size: 0.9rem; box-shadow: inset 0 0 5px rgba(0,0,0,0.5);">
-                    <button class="action-btn-sm" onclick="verifyRiddle()">SUBMIT</button>
+                    <button class="action-btn-sm" onclick="verifyMultiStageRiddle()">SUBMIT</button>
                 </div>
+                
                 <p id="riddleError" style="font-size: 0.8rem; color: #ff3366; margin-top: 12px; display: none; font-weight: 700;">[!] Think about what the Other Mother uses to sew... 🧵</p>
             </div>
 
@@ -308,22 +314,34 @@
             <div style="height: 1px; width: 160px; background: repeating-linear-gradient(90deg, #39ff14, #39ff14 4px, transparent 4px, transparent 8px); margin: 0 auto 30px auto;"></div>
             
             <!-- Vintage Typewriter-Style Long Letter Box Node -->
-             <div class="letter-content" style="color: #a3b0c2; font-size: 1rem; line-height: 1.8; max-height: 400px; overflow-y: auto; padding-right: 15px; background-color: #090e17; border: 2px dashed #8b0000; padding: 30px; border-radius: 4px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
-                <p style="margin-bottom: 20px; font-weight: 700; color: #8b0000; font-family: 'Cinzel', serif; font-size: 1.1rem; text-align: left !important;">My Dearest Eia,</p>
+                        <!-- Vintage Typewriter-Style Long Letter Box Node (Fully Justified & Custom Printed) -->
+            <div class="letter-content" style="color: #a3b0c2; font-size: 1rem; line-height: 1.8; max-height: 400px; overflow-y: auto; padding-right: 15px; background-color: #090e17; border: 2px dashed #8b0000; padding: 30px; border-radius: 4px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
+                <p style="margin-bottom: 20px; font-weight: 700; color: #8b0000; font-family: 'Cinzel', serif; font-size: 1.1rem; text-align: left !important;">Dearest Eia,</p>
                 
-                <p style="margin-bottom: 20px;">
-                    Happy Birthday to the most amazing girl in the entire world! Today is all about celebrating you, your beautiful soul, and the incredible light you bring into my life every single day. I wanted to build this little secret world just for you to show you how completely special you are to me.
+                <p style="margin-bottom: 20px; text-align: justify !important; text-justify: inter-word !important;">
+                    I hope you enjoyed this website as much as I enjoyed making it, imagining how you would giggle and react to everything I've put here. I made it interactive, but not too over the top, because this isn't the only gift I have for you. You'll get the rest once we meet again. All of it. :)
                 </p>
                 
-                <p style="margin-bottom: 20px;">
-                    Every single moment spent by your side is a memory I hold close to my heart. Your smile can instantly clear away any dark cloud, and your warmth makes everything feel peaceful. You deserve the absolute world today and every single day after. I am so unbelievably grateful to walk this journey right by your side.
+                <p style="margin-bottom: 20px; text-align: justify !important; text-justify: inter-word !important;">
+                    I am beyond grateful to be your partner—for witnessing your everyday life, for allowing me to see your vulnerable side, and for always loving me for who I am, no matter how rocky our situation gets. Thank you for your patience, your understanding, and the love you continue to give me every single day. Just... thank you for everything, baby.
                 </p>
                 
-                <p style="margin-bottom: 20px;">
-                    Just like Coraline discovered a magical world hidden right behind the little door, finding you opened up a whole new universe of endless happiness for me. Thank you for being my anchor, my peace, and my absolute favorite person in existence.
+                <p style="margin-bottom: 20px; text-align: justify !important; text-justify: inter-word !important;">
+                    Today, we celebrate you—your beautiful soul and the incredible light you bring not only into my life but also to everyone around you, every single day.
                 </p>
                 
-                <p style="text-align: right !important; font-weight: 700; color: #39ff14; margin-top: 25px; font-family: 'Cinzel', serif;">Forever and always, Yours. ❤️</p>
+                <p style="margin-bottom: 20px; text-align: justify !important; text-justify: inter-word !important;">
+                    I hope you know that every moment we spend together is a memory I hold close to my heart. Your soothing voice and reassuring smile can instantly wash away all my doubts, and your warmth makes everything feel peaceful. You deserve every good thing life has to offer. I am so lucky to have you by my side as we walk through this lifetime together.
+                </p>
+                
+                <p style="margin-bottom: 20px; text-align: justify !important; text-justify: inter-word !important;">
+                    I love you so much, my baby. Just as Coraline discovered a magical world hidden behind the little door, finding you opened up an entirely new universe of happiness for me. Thank you for being my anchor, my peace, and my favorite person in existence. :)
+                </p>
+                
+                <p style="text-align: right !important; font-weight: 700; color: #39ff14; margin-top: 25px; font-family: 'Cinzel', serif; line-height: 1.5;">
+                    Always yours,<br>
+                    <span style="font-size: 1.1rem; color: #39ff14;">Lee ❤️</span>
+                </p>
             </div>
 
     </div> <!-- Closes .sanctuary-card cleanly -->
@@ -356,47 +374,107 @@
         }
 
         // Checklist 1: Coraline Riddle Check Routine
-        function verifyRiddle() {
+                // Track multi-stage riddle tiers (Updated to 5 levels)
+        let currentRiddleStage = 1;
+
+        function verifyMultiStageRiddle() {
             const inputField = document.getElementById('riddleInput');
             const errorLabel = document.getElementById('riddleError');
+            const stageTitle = document.getElementById('riddleStageTitle');
+            const questionText = document.getElementById('riddleQuestionText');
             const answer = inputField.value.trim().toLowerCase();
 
-            // Checks for correct themed answers ("button", "buttons", or "sewing button")
-            if (answer.includes('button')) {
-                riddleUnlocked = true;
-                errorLabel.style.display = 'none';
-                document.getElementById('riddle-modal').style.display = 'none';
-                
-                // Set lock indicator dot to neon green glow state
-                const dot = document.getElementById('dot-riddle');
-                dot.classList.add('active-pass');
-                
-                // Disable riddle option and unlock photo slider row button
-                document.getElementById('btn-riddle').disabled = true;
-                document.getElementById('btn-riddle').innerText = 'PASSED';
-                document.getElementById('btn-photos').disabled = false;
-                
-                // Prompt user onto next task box automatically
-                showMiniTask('photo-modal');
-            } else {
-                errorLabel.style.display = 'block';
-                inputField.value = ''; // Flush bad entry strings cleanly
+            if (currentRiddleStage === 1) {
+                // Tier 1: Easy Check
+                if (answer.includes('Button')) {
+                    currentRiddleStage = 2;
+                    errorLabel.style.display = 'none';
+                    inputField.value = '';
+                    
+                    stageTitle.innerText = "🔮 LEVEL 2: MEDIUM-EASY";
+                    questionText.innerText = '"I have no wings but I can fly, I have no voice but I can cry, and I am the Other Mother\'s winged hair-clip scout spy... What am I?"';
+                } else {
+                    errorLabel.innerText = "[!] Think about what the Other Mother uses to sew... 🧵";
+                    errorLabel.style.display = 'block';
+                }
+            } else if (currentRiddleStage === 2) {
+                // Tier 2: Medium-Easy Check
+                if (answer.includes('Dragon')) {
+                    currentRiddleStage = 3;
+                    errorLabel.style.display = 'none';
+                    inputField.value = '';
+                    
+                    stageTitle.innerText = "🔮 LEVEL 3: MEDIUM";
+                    questionText.innerText = '"I am forged from cold metal to unlatch hidden brick pathways, yet I fit perfectly inside a small pocket. What am I?"';
+                } else {
+                    errorLabel.innerText = "[!] Look at her toy hair accessories... It is a flying bug! 🦟";
+                    errorLabel.style.display = 'block';
+                }
+            } else if (currentRiddleStage === 3) {
+                // Tier 3: Medium Check
+                if (answer.includes('Key')) {
+                    currentRiddleStage = 4;
+                    errorLabel.style.display = 'none';
+                    inputField.value = '';
+                    
+                    stageTitle.innerText = "🔮 LEVEL 4: MEDIUM-HARD";
+                    questionText.innerText = '"I am a green loop made of stone, look through my center when you are completely alone. I find what is stolen or lost... What am I?"';
+                } else {
+                    errorLabel.innerText = "[!] Think about what opens the small hidden living room door.. 🔑";
+                    errorLabel.style.display = 'block';
+                }
+            } else if (currentRiddleStage === 4) {
+                // Tier 4: Medium-Hard Check
+                if (answer.includes('Stone')) {
+                    currentRiddleStage = 5;
+                    errorLabel.style.display = 'none';
+                    inputField.value = '';
+                    
+                    stageTitle.innerText = "🔮 LEVEL 5: HARD";
+                    questionText.innerText = '"I look friendly at first but have a wicked steel sting. I weave fine silken webs to trap wandering children.. Who am I?"';
+                } else {
+                    errorLabel.innerText = "[!] Miss Spink and Forcible gave this candy item to Coraline to look through.. 🟢";
+                    errorLabel.style.display = 'block';
+                }
+            } else if (currentRiddleStage === 5) {
+                // Tier 5: Hard Check
+                if (answer.includes('Mother') || answer.includes('Spider')) {
+                    riddleUnlocked = true;
+                    errorLabel.style.display = 'none';
+                    document.getElementById('riddle-modal').style.display = 'none';
+                    
+                    // Light up the main dashboard check-box node indicator green
+                    const dot = document.getElementById('dot-riddle');
+                    dot.classList.add('active-pass');
+                    
+                    // Pass progression straight onto the 5-photo slider module
+                    document.getElementById('btn-riddle').disabled = true;
+                    document.getElementById('btn-riddle').innerText = 'PASSED';
+                    document.getElementById('btn-photos').disabled = false;
+                    
+                    showMiniTask('photo-modal');
+                } else {
+                    errorLabel.innerText = "[!] She weaves web traps in her sewing parlor... Who is she? 🕷️";
+                    errorLabel.style.display = 'block';
+                }
             }
         }
 
-        // Checklist 2: Deck Slide Progression Controller (Updated for 5 Photos)
+
+        // Checklist 2: Deck Slide Progression Controller (Properly updated for your 5 files)
         function shiftSlide(direction) {
             const slides = document.querySelectorAll('.gallery-slide');
             
-            // Hide current card
+            // Hide current card layout view
             slides[activeSlideIndex].style.display = 'none';
             
-            // Cycle math constraints keeping pointer bound to 0-4 array bounds
+            // Increment the counter position based on button clicked
             activeSlideIndex += direction;
+            
+            // If user reaches past the final 5th slide, lock tasks row 2 completely!
             if (activeSlideIndex >= slides.length) {
                 activeSlideIndex = slides.length - 1;
                 
-                // If she scrolls to the final image card, unlock task row 2 completely!
                 if (!photosUnlocked) {
                     photosUnlocked = true;
                     document.getElementById('photo-modal').style.display = 'none';
@@ -409,12 +487,16 @@
                     document.getElementById('btn-magic').disabled = false;
                 }
             }
-            if (activeSlideIndex < 0) activeSlideIndex = 0;
+            
+            // Prevent going below the 1st slide
+            if (activeSlideIndex < 0) {
+                activeSlideIndex = 0;
+            }
 
             // Render newly targeted slide image node frame
             slides[activeSlideIndex].style.display = 'flex';
             
-            // Render index numbering string tracker display element
+            // Render index numbering string tracker display element dynamically out of active elements length
             document.getElementById('slideIndexDisplay').innerText = `${activeSlideIndex + 1} / ${slides.length}`;
         }
 
