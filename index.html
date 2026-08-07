@@ -402,176 +402,284 @@
         }
     </style>
     
-    <!-- Single Page Whimsical Verification Script Engine -->
-    <script>
-// Track task completion progress states
-        let riddleUnlocked = false;
-        let photosUnlocked = false;
-        let activeSlideIndex = 0;
-        let currentRiddleStage = 1;
+            <!-- Single Page Whimsical Verification Script Engine -->
+<script>
+    let riddleUnlocked = localStorage.getItem('coraline_riddleUnlocked') === 'true';
+    let photosUnlocked = localStorage.getItem('coraline_photosUnlocked') === 'true';
+    let activeSlideIndex = parseInt(localStorage.getItem('coraline_activeSlideIndex')) || 0;
+    let currentRiddleStage = parseInt(localStorage.getItem('coraline_currentRiddleStage')) || 1;
 
-        // Toggle puzzle interface drawer modals smoothly
-        function showMiniTask(modalId) {
-            // Hide all task wrappers first to prevent multi-view clutter
-            document.getElementById('riddle-modal').style.display = 'none';
-            document.getElementById('photo-modal').style.display = 'none';
-            
-            const targetModal = document.getElementById(modalId);
-            if (targetModal) {
-                targetModal.style.display = 'block';
+    // Centralized state saver function
+    function saveCoralineProgress() {
+        localStorage.setItem('coraline_currentRiddleStage', currentRiddleStage);
+        localStorage.setItem('coraline_riddleUnlocked', riddleUnlocked);
+        localStorage.setItem('coraline_photosUnlocked', photosUnlocked);
+        localStorage.setItem('coraline_activeSlideIndex', activeSlideIndex);
+    }
+
+    // Toggle puzzle interface drawer modals smoothly
+    function showMiniTask(modalId) {
+        // Hide all task wrappers first to prevent multi-view clutter
+        const riddleModal = document.getElementById('riddle-modal');
+        const photoModal = document.getElementById('photo-modal');
+        if (riddleModal) riddleModal.style.display = 'none';
+        if (photoModal) photoModal.style.display = 'none';
+
+        const targetModal = document.getElementById(modalId);
+        if (targetModal) {
+            targetModal.style.display = 'block';
+        }
+    }
+
+    // Checklist 1: Five-Tier Multi-Stage Coraline Riddle Quest Routine
+    function verifyMultiStageRiddle() {
+        const inputField = document.getElementById('riddleInput');
+        const errorLabel = document.getElementById('riddleError');
+        const stageTitle = document.getElementById('riddleStageTitle');
+        const questionText = document.getElementById('riddleQuestionText');
+        const answer = inputField ? inputField.value.trim().toLowerCase() : '';
+
+        if (!inputField || !errorLabel || !stageTitle || !questionText) return;
+
+        if (currentRiddleStage === 1) {
+            if (answer.includes('button')) {
+                currentRiddleStage = 2;
+                saveCoralineProgress();
+                errorLabel.style.display = 'none';
+                inputField.value = '';
+                stageTitle.innerText = " 🧵 LEVEL 2: MEDIUM-EASY";
+                questionText.innerText = "I have no wings but I can fly, I have no voice but I can cry, and I am the Other Mother's winged hair-clip scout spy...";
+            } else {
+                errorLabel.innerText = "[!] Think about what the Other Mother uses to sew... 🪡👁️";
+                errorLabel.style.display = 'block';
+            }
+        } 
+        else if (currentRiddleStage === 2) {
+            if (answer.includes('dragon')) {
+                currentRiddleStage = 3;
+                saveCoralineProgress();
+                errorLabel.style.display = 'none';
+                inputField.value = '';
+                stageTitle.innerText = " 🔑 LEVEL 3: MEDIUM";
+                questionText.innerText = "I am forged from cold metal to unlatch hidden brick pathways, yet I fit perfectly inside a small pocket. What am I?";
+            } else {
+                errorLabel.innerText = "[!] Look at her toy hair accessories... It is a flying bug! 🪰";
+                errorLabel.style.display = 'block';
+            }
+        } 
+        else if (currentRiddleStage === 3) {
+            if (answer.includes('key')) {
+                currentRiddleStage = 4;
+                saveCoralineProgress();
+                errorLabel.style.display = 'none';
+                inputField.value = '';
+                stageTitle.innerText = " 🟢 LEVEL 4: MEDIUM-HARD";
+                questionText.innerText = "I am a green loop made of stone, look through my center when you are completely alone. I find what is stolen or lost.";
+            } else {
+                errorLabel.innerText = "[!] Think about what opens the small hidden living room door... 🗝️";
+                errorLabel.style.display = 'block';
+            }
+        } 
+        else if (currentRiddleStage === 4) {
+            if (answer.includes('stone')) {
+                currentRiddleStage = 5;
+                saveCoralineProgress();
+                errorLabel.style.display = 'none';
+                inputField.value = '';
+                stageTitle.innerText = " 🕷️ LEVEL 5: HARD";
+                questionText.innerText = "I look friendly at first but have a wicked steel sting. I weave fine silken webs to trap wandering children... Who am I?";
+            } else {
+                errorLabel.innerText = "[!] Miss Spink and Forcible gave this candy item to Coraline to look through... 🟢";
+                errorLabel.style.display = 'block';
+            }
+        } 
+        else if (currentRiddleStage === 5) {
+            if (answer.includes('mother') || answer.includes('spider')) {
+                riddleUnlocked = true;
+                saveCoralineProgress();
+                errorLabel.style.display = 'none';
+
+                // Light up dashboard green indicators
+                const dot = document.getElementById('dot-riddle');
+                if (dot) dot.classList.add('active-pass');
+
+                // Pass progression onto the 5-photo slider
+                document.getElementById('btn-riddle').disabled = true;
+                document.getElementById('btn-riddle').innerText = 'PASSED';
+                document.getElementById('btn-photos').disabled = false;
+
+                const riddleModalWrapper = document.getElementById('riddle-modal');
+                if (riddleModalWrapper) riddleModalWrapper.style.display = 'none';
+
+                showMiniTask('photo-modal');
+            } else {
+                errorLabel.innerText = "[!] She weaves web traps in her sewing parlor... Who is she? 🕸️👩";
+                errorLabel.style.display = 'block';
             }
         }
+    }
 
-        // Checklist 1: Five-Tier Multi-Stage Coraline Riddle Quest Routine
-        function verifyMultiStageRiddle() {
-            const inputField = document.getElementById('riddleInput');
-            const errorLabel = document.getElementById('riddleError');
-            const stageTitle = document.getElementById('riddleStageTitle');
-            const questionText = document.getElementById('riddleQuestionText');
-            const answer = inputField.value.trim().toLowerCase();
+    // Checklist 2: Deck Slide Progression Controller (For 5 Photos)
+    function shiftSlide(direction) {
+        const slides = document.querySelectorAll('.gallery-slide');
+        if (slides.length === 0) return;
 
-            if (currentRiddleStage === 1) {
-                // Tier 1: Easy Check
-                if (answer.includes('button')) {
-                    currentRiddleStage = 2;
-                    errorLabel.style.display = 'none';
-                    inputField.value = '';
-                    
-                    stageTitle.innerText = "🔮 LEVEL 2: MEDIUM-EASY";
-                    questionText.innerText = '"I have no wings but I can fly, I have no voice but I can cry, and I am the Other Mother\'s winged hair-clip scout spy... What am I?"';
-                } else {
-                    errorLabel.innerText = "[!] Think about what the Other Mother uses to sew... 🧵";
-                    errorLabel.style.display = 'block';
-                }
-            } else if (currentRiddleStage === 2) {
-                // Tier 2: Medium-Easy Check
-                if (answer.includes('dragon')) {
-                    currentRiddleStage = 3;
-                    errorLabel.style.display = 'none';
-                    inputField.value = '';
-                    
-                    stageTitle.innerText = "🔮 LEVEL 3: MEDIUM";
-                    questionText.innerText = '"I am forged from cold metal to unlatch hidden brick pathways, yet I fit perfectly inside a small pocket. What am I?"';
-                } else {
-                    errorLabel.innerText = "[!] Look at her toy hair accessories... It is a flying bug! 🦟";
-                    errorLabel.style.display = 'block';
-                }
-            } else if (currentRiddleStage === 3) {
-                // Tier 3: Medium Check
-                if (answer.includes('key')) {
-                    currentRiddleStage = 4;
-                    errorLabel.style.display = 'none';
-                    inputField.value = '';
-                    
-                    stageTitle.innerText = "🔮 LEVEL 4: MEDIUM-HARD";
-                    questionText.innerText = '"I am a green loop made of stone, look through my center when you are completely alone. I find what is stolen or lost... What am I?"';
-                } else {
-                    errorLabel.innerText = "[!] Think about what opens the small hidden living room door... 🔑";
-                    errorLabel.style.display = 'block';
-                }
-            } else if (currentRiddleStage === 4) {
-                // Tier 4: Medium-Hard Check
-                if (answer.includes('stone')) {
-                    currentRiddleStage = 5;
-                    errorLabel.style.display = 'none';
-                    inputField.value = '';
-                    
-                    stageTitle.innerText = "🔮 LEVEL 5: HARD";
-                    questionText.innerText = '"I look friendly at first but have a wicked steel sting. I weave fine silken webs to trap wandering children... Who am I?"';
-                } else {
-                    errorLabel.innerText = "[!] Miss Spink and Forcible gave this candy item to Coraline to look through... 🟢";
-                    errorLabel.style.display = 'block';
-                }
-            } else if (currentRiddleStage === 5) {
-                // Tier 5: Hard Check
-                if (answer.includes('mother') || answer.includes('spider')) {
-                    riddleUnlocked = true;
-                    errorLabel.style.display = 'none';
-                    document.getElementById('riddle-modal').style.display = 'none';
-                    
-                    // Light up the main dashboard check-box node indicator green
-                    const dot = document.getElementById('dot-riddle');
-                    dot.classList.add('active-pass');
-                    
-                    // Pass progression straight onto the 5-photo slider module
-                    document.getElementById('btn-riddle').disabled = true;
-                    document.getElementById('btn-riddle').innerText = 'PASSED';
-                    document.getElementById('btn-photos').disabled = false;
-                    
-                    showMiniTask('photo-modal');
-                } else {
-                    errorLabel.innerText = "[!] She weaves web traps in her sewing parlor... Who is she? 🕷️";
-                    errorLabel.style.display = 'block';
-                }
-            }
-        }
+        // Hide current card layout view
+        slides[activeSlideIndex].style.display = 'none';
 
-        // Checklist 2: Deck Slide Progression Controller (For 5 Photos)
-        function shiftSlide(direction) {
-            const slides = document.querySelectorAll('.gallery-slide');
-            
-            // Hide current card layout view
-            slides[activeSlideIndex].style.display = 'none';
-            
-            // Increment the counter position based on button clicked
-            activeSlideIndex += direction;
-            
-            // If user reaches past the final 5th slide, lock tasks row 2 completely!
-            if (activeSlideIndex >= slides.length) {
-                activeSlideIndex = slides.length - 1;
+        // Increment position
+        activeSlideIndex += direction;
+
+        // If user reaches past the final 5th slide, lock task row 2 completely
+        if (activeSlideIndex >= slides.length) {
+            activeSlideIndex = slides.length - 1;
+
+            if (!photosUnlocked) {
+                photosUnlocked = true;
+                saveCoralineProgress();
                 
-                if (!photosUnlocked) {
-                    photosUnlocked = true;
-                    document.getElementById('photo-modal').style.display = 'none';
-                    
-                    const dot = document.getElementById('dot-photos');
-                    dot.classList.add('active-pass');
-                    
-                    document.getElementById('btn-photos').disabled = true;
-                    document.getElementById('btn-photos').innerText = 'PASSED';
-                    document.getElementById('btn-magic').disabled = false;
-                }
-            }
-            
-            // Prevent going below the 1st slide
-            if (activeSlideIndex < 0) {
-                activeSlideIndex = 0;
-            }
+                const photoModal = document.getElementById('photo-modal');
+                if (photoModal) photoModal.style.display = 'none';
 
-            // Render newly targeted slide image node frame
-            slides[activeSlideIndex].style.display = 'flex';
-            
-            // Render index numbering string tracker display element dynamically
-            document.getElementById('slideIndexDisplay').innerText = `${activeSlideIndex + 1} / ${slides.length}`;
+                const dot = document.getElementById('dot-photos');
+                if (dot) dot.classList.add('active-pass');
+
+                document.getElementById('btn-photos').disabled = true;
+                document.getElementById('btn-photos').innerText = 'PASSED';
+                document.getElementById('btn-magic').disabled = false;
+            }
         }
 
-        // Checklist 3: Master Button Magic Breakaway Trigger
-        function triggerMagicKey() {
-            if (riddleUnlocked && photosUnlocked) {
-                const dot = document.getElementById('dot-magic');
-                dot.classList.add('active-pass');
-                document.getElementById('btn-magic').innerText = 'OPENED';
-                
-                // 1. Smoothly fade out the entry puzzle block layout
-                const door = document.getElementById('doorPanel');
+        // Prevent going below 1st slide
+        if (activeSlideIndex < 0) {
+            activeSlideIndex = 0;
+        }
+
+        // Render slide index tracking elements dynamically
+        slides[activeSlideIndex].style.display = 'flex';
+        document.getElementById('slideIndexDisplay').innerText = `${activeSlideIndex + 1} / ${slides.length}`;
+        saveCoralineProgress();
+    }
+
+    // Checklist 3: Master Button Magic Breakaway Trigger
+    function triggerMagicKey() {
+        if (riddleUnlocked && photosUnlocked) {
+            const dot = document.getElementById('dot-magic');
+            if (dot) dot.classList.add('active-pass');
+            document.getElementById('btn-magic').innerText = 'OPENED';
+            
+            localStorage.setItem('coraline_gameCompleted', 'true');
+            saveCoralineProgress();
+
+            // 1. Smoothly fade out the entry puzzle block layout
+            const door = document.getElementById('doorPanel');
+            if (door) {
                 door.style.opacity = '0';
                 door.style.transform = 'scale(0.95)';
-                
                 setTimeout(() => {
                     door.style.display = 'none';
-                    
-                    // 2. Smoothly reveal the hidden long letter view card
-                    const reward = document.getElementById('rewardPanel');
-                    reward.style.display = 'block';
-                    
-                    // Small delay hooks CSS rendering engine for clean transitions
-                    setTimeout(() => {
-                        reward.style.opacity = '1';
-                        reward.style.transform = 'scale(1)';
-                    }, 50);
                 }, 400);
             }
+
+            // 2. Smoothly reveal the hidden long letter view card
+            const reward = document.getElementById('rewardPanel');
+            if (reward) {
+                reward.style.display = 'block';
+                setTimeout(() => {
+                    reward.style.opacity = '1';
+                    reward.style.transform = 'scale(1)';
+                }, 50);
+            }
         }
-    </script>
+    }
+
+    // 🟢 Automatically restore state layout rules right when the page launches
+    window.addEventListener('DOMContentLoaded', () => {
+        const stageTitle = document.getElementById('riddleStageTitle');
+        const questionText = document.getElementById('riddleQuestionText');
+
+        // Check if the whole gauntlet is completed. If so, immediately load the secret reward!
+        if (localStorage.getItem('coraline_gameCompleted') === 'true') {
+            const door = document.getElementById('doorPanel');
+            const reward = document.getElementById('rewardPanel');
+            
+            if (door) door.style.display = 'none';
+            if (reward) {
+                reward.style.display = 'block';
+                reward.style.opacity = '1';
+                reward.style.transform = 'scale(1)';
+            }
+            
+            const dotMagic = document.getElementById('dot-magic');
+            if (dotMagic) dotMagic.classList.add('active-pass');
+            
+            const btnMagic = document.getElementById('btn-magic');
+            if (btnMagic) {
+                btnMagic.innerText = 'OPENED';
+                btnMagic.disabled = true;
+            }
+            return; // Exit setup early since the game is finished
+        }
+
+        // Restore dashboard button state logic loops if partially completed
+        if (riddleUnlocked) {
+            const dotRiddle = document.getElementById('dot-riddle');
+            if (dotRiddle) dotRiddle.classList.add('active-pass');
+            
+            const btnRiddle = document.getElementById('btn-riddle');
+            if (btnRiddle) {
+                btnRiddle.disabled = true;
+                btnRiddle.innerText = 'PASSED';
+            }
+            
+            const btnPhotos = document.getElementById('btn-photos');
+            if (btnPhotos) btnPhotos.disabled = false;
+
+            if (stageTitle && questionText) {
+                stageTitle.innerText = "🔑 CHALLENGE COMPLETED";
+                questionText.innerText = "The Beldam's trials have been shattered. The path is unlocked.";
+            }
+        }
+
+        if (photosUnlocked) {
+            const dotPhotos = document.getElementById('dot-photos');
+            if (dotPhotos) dotPhotos.classList.add('active-pass');
+            
+            const btnPhotos = document.getElementById('btn-photos');
+            if (btnPhotos) {
+                btnPhotos.disabled = true;
+                btnPhotos.innerText = 'PASSED';
+            }
+            
+            const btnMagic = document.getElementById('btn-magic');
+            if (btnMagic) btnMagic.disabled = false;
+        }
+
+        // Handle mid-riddle question text auto-loading states safely
+        if (!riddleUnlocked && stageTitle && questionText) {
+            if (currentRiddleStage === 2) {
+                stageTitle.innerText = " 🧵 LEVEL 2: MEDIUM-EASY";
+                questionText.innerText = "I have no wings but I can fly, I have no voice but I can cry, and I am the Other Mother\'s winged hair-clip scout spy...";
+            } else if (currentRiddleStage === 3) {
+                stageTitle.innerText = " 🔑 LEVEL 3: MEDIUM";
+                questionText.innerText = "I am forged from cold metal to unlatch hidden brick pathways, yet I fit perfectly inside a small pocket. What am I?";
+            } else if (currentRiddleStage === 4) {
+                stageTitle.innerText = " 🟢 LEVEL 4: MEDIUM-HARD";
+                questionText.innerText = "I am a green loop made of stone, look through my center when you are completely alone. I find what is stolen or lost.";
+            } else if (currentRiddleStage === 5) {
+                stageTitle.innerText = " 🕷️ LEVEL 5: HARD";
+                questionText.innerText = "I look friendly at first but have a wicked steel sting. I weave fine silken webs to trap wandering children... Who am I?";
+            }
+        }
+        
+        // Restore slide count UI text naturally
+        const slides = document.querySelectorAll('.gallery-slide');
+        const displayIndex = document.getElementById('slideIndexDisplay');
+        if (slides.length > 0 && displayIndex) {
+            slides.forEach((s, idx) => s.style.display = idx === activeSlideIndex ? 'flex' : 'none');
+            displayIndex.innerText = `${activeSlideIndex + 1} / ${slides.length}`;
+        }
+    });
+</script>
 </body>
 </html>
